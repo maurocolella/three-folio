@@ -1,16 +1,18 @@
-import React from 'react';
+import React, { useRef, useCallback } from 'react';
 import { Canvas } from 'react-three-fiber';
-import Box from './components/Box';
+import Swarm from './components/Swarm';
 
 function App() {
-  return (
-    <Canvas>
-        <ambientLight />
-        <pointLight position={[10, 10, 10]} />
-        <Box position={[-1.2, 0, 0]} />
-        <Box position={[1.2, 0, 0]} />
-    </Canvas>
-  );
+    const mouse = useRef([300, -200])
+    const onMouseMove = useCallback(({ clientX: x, clientY: y }) => (mouse.current = [x - window.innerWidth / 2, y - window.innerHeight / 2]), [])
+
+    return (
+        <Canvas camera={{ fov: 45, position: [0, 0, 30] }} onMouseMove={onMouseMove}>
+            <ambientLight />
+            <pointLight position={[10, 10, 10]} />
+            <Swarm mouse={mouse} count={3600} />
+        </Canvas>
+    );
 }
 
 export default App;
