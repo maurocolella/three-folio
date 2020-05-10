@@ -7,7 +7,7 @@ function App() {
     const onMouseMove = useCallback(({ clientX: x, clientY: y }) => (mouse.current = [x - window.innerWidth / 2, y - window.innerHeight / 2]), [])
 
     return (
-        <Canvas camera={{ fov: 45, position: [0, 0, 30] }} onMouseMove={onMouseMove}>
+        <Canvas camera={{ fov: 45, position: [0, 0, 120] }} onMouseMove={onMouseMove}>
             <ambientLight />
             <pointLight position={[10, 10, 10]} />
             <Swarm mouse={mouse} count={3600} />
