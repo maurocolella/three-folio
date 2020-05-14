@@ -1,6 +1,6 @@
 import React, { useRef, useCallback } from 'react';
 import { Canvas } from 'react-three-fiber';
-import Swarm from './components/Swarm';
+import Cylinder from './components/Cylinder';
 import Effect from './components/Effect';
 
 function App() {
@@ -8,10 +8,10 @@ function App() {
     const onMouseMove = useCallback(({ clientX: x, clientY: y }) => (mouse.current = [x - window.innerWidth / 2, y - window.innerHeight / 2]), []);
 
     return (
-        <Canvas camera={{ fov: 45, position: [0, 0, 144] }} onMouseMove={onMouseMove}>
+        <Canvas camera={{ fov: 4, position: [0, 0, 1000] }} onMouseMove={onMouseMove}>
             <ambientLight />
             <pointLight position={[10, 10, 10]} />
-            <Swarm mouse={mouse} count={14400} />
+            <Cylinder />
             <Effect />
         </Canvas>
     );
