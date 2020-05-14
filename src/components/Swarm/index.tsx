@@ -31,7 +31,7 @@ function Swarm({ count, mouse }: { count: number, mouse: any }) {
         particles.forEach((particle, i) => {
             let { t, factor, speed, zFactor } = particle
             // There is no sense or reason to any of this, just messing around with trigonometric functions
-            t = particle.t -= speed / 20
+            t = particle.t -= speed / 500
             const r = 60;
             // const a = Math.cos(t) + Math.sin(t * 1) / 10
             const b = Math.sin(t) + Math.cos(t * 2) / 10
@@ -40,8 +40,8 @@ function Swarm({ count, mouse }: { count: number, mouse: any }) {
             // particle.my += (mouse.current[1] * -1 - particle.my) * 0.01
             // Update the dummy object
             dummy.position.set(
-                (particle.mx / 10) + Math.cos((i / 10) * factor) * r,
-                (particle.my / 10) + Math.sin((i / 10) * factor) * r,
+                (particle.mx / 10) + Math.cos(((i + t) / 10) * factor) * r,
+                (particle.my / 10) + Math.sin(((i + t) / 10) * factor) * r,
                 (particle.my / 10) * b + zFactor,
             )
             dummy.scale.set(s, s, s)

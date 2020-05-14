@@ -68,7 +68,7 @@ class GaussianBlurShader {
         uniform vec2 resolution;
 
         void main() {
-            gl_FragColor = blur13(tDiffuse, vUv, resolution, direction);
+            gl_FragColor = blur9(tDiffuse, vUv, resolution, direction);
         }`,
 
     ].join("\n");
