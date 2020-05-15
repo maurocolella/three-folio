@@ -15,9 +15,9 @@ import { Vector2, Texture } from 'three';
 class GaussianBlurShader {
 
     uniforms = {
-        "tDiffuse": { value: <Texture | null>null },
-        "direction": { value: new Vector2(1.0, 1.0) },
-        "resolution": { value: new Vector2(1.0, 1.0) },
+        tDiffuse: { value: null } as Texture | unknown,
+        direction: { value: new Vector2(1.0, 1.0) },
+        resolution: { value: new Vector2(1.0, 1.0) },
     };
 
     vertexShader = [
@@ -31,9 +31,7 @@ class GaussianBlurShader {
     ].join("\n");
 
     fragmentShader = [
-        `#include <common>
-
-        vec4 blur9(sampler2D image, vec2 uv, vec2 resolution, vec2 direction) {
+        `vec4 blur9(sampler2D image, vec2 uv, vec2 resolution, vec2 direction) {
             vec4 color = vec4(0.0);
             vec2 off1 = vec2(1.3846153846) * direction;
             vec2 off2 = vec2(3.2307692308) * direction;

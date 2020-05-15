@@ -17,10 +17,10 @@
 class RadialBlurShader {
 
     uniforms = {
-        "tDiffuse": { value: <Texture | null>null },
-        "center": { value: new Vector2(0.5, 0.5) },
-        "strength": { value: 0.02 },
-        "resolution": { value: new Vector2(1.0, 1.0) },
+        tDiffuse: { value: null } as Texture | unknown,
+        center: { value: new Vector2(0.5, 0.5) },
+        strength: { value: 0.02 },
+        resolution: { value: new Vector2(1.0, 1.0) },
     };
 
     vertexShader = [

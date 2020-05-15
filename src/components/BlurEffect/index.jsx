@@ -1,6 +1,3 @@
-
-// import { WebGLRenderTarget } from 'three';
-// import { SubtractiveBlending } from 'three';
 import { useEffect, useMemo } from 'react';
 import { extend, useFrame, useThree } from 'react-three-fiber';
 import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer';
@@ -14,7 +11,7 @@ import { AdditiveShader } from '../../shaders/AdditiveShader';
 
 extend({ EffectComposer, ShaderPass, RenderPass });
 
-function Effect() {
+function BlurEffect() {
     const { gl, scene, camera, size } = useThree()
 
     const [base, blur, final] = useMemo(() => {
@@ -53,7 +50,7 @@ function Effect() {
         fxaa.material.uniforms['resolution'].value.y = 1 / size.height
         finalComposer.addPass(fxaa) */
         return [comp, blurComposer, finalComposer];
-    }, []);
+    }, [camera, gl, scene]);
 
     useEffect(() => {
         base.setSize(size.width, size.height);
@@ -70,4 +67,4 @@ function Effect() {
     return null;
 };
 
-export default Effect;
+export default BlurEffect;

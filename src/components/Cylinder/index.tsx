@@ -1,16 +1,15 @@
-import React, { useRef, useState } from 'react'
-import { useFrame } from 'react-three-fiber'
-import { DoubleSide } from 'three';
+import React, { useRef } from 'react';
+import { useFrame } from 'react-three-fiber';
+import { Points } from 'three';
 
 function Cylinder(props: any) {
   // This reference will give us direct access to the mesh
-  const mesh = useRef<any>()
+  const mesh = useRef<Points>();
 
   // Rotate mesh every frame, this is outside of React without overhead
   useFrame(() => {
-      const { current } = mesh;
-      /*current!.rotation.x =*/ current!.rotation.y += 0.001;
-  })
+      mesh.current!.rotation.y += 0.001;
+  });
 
   return (
     <points
@@ -22,7 +21,7 @@ function Cylinder(props: any) {
       <cylinderBufferGeometry attach="geometry" args={[24, 24, 40, 360, 40, true]} />
       <pointsMaterial attach="material" color={'black'} />
     </points>
-  )
-}
+  );
+};
 
 export default Cylinder;
