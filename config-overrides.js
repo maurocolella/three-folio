@@ -1,5 +1,9 @@
 
-const { addWebpackPlugin, addWebpackAlias, override } = require('customize-cra');
+const {
+    addWebpackPlugin,
+    addWebpackAlias,
+    addWebpackModuleRule,
+    override } = require('customize-cra');
 const { addReactRefresh } = require('customize-cra-react-refresh');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const path = require('path');
@@ -11,4 +15,13 @@ module.exports = override(
   }),
   addReactRefresh({ disableRefreshCheck: true }),
   addWebpackPlugin(new BundleAnalyzerPlugin()),
+  addWebpackModuleRule(
+    {
+      test: /\.(glsl|vs|fs|vert|frag)$/,
+      exclude: /node_modules/,
+      use: [
+        'raw-loader',
+      ]
+    }
+  ),
 );

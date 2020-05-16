@@ -40,6 +40,7 @@
   "devDependencies": {
     "customize-cra": "^0.9.1",
     "customize-cra-react-refresh": "^1.0.1",
+    "raw-loader": "^4.0.1",
     "react-app-rewired": "^2.1.6",
     "typescript": "^3.9.0-beta",
     "webpack-bundle-analyzer": "^3.7.0"

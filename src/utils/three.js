@@ -5,7 +5,7 @@
 export { WebGLRenderTarget } from 'three/src/renderers/WebGLRenderTarget.js'
 export { WebGLRenderer } from 'three/src/renderers/WebGLRenderer.js'
 // export { ShaderLib } from './ShaderLib.js'
-// export { UniformsLib } from './UniformsLib.js'
+// export { UniformsLib } from 'three/src/renderers/shaders/UniformsLib.js'
 export { UniformsUtils } from 'three/src/renderers/shaders/UniformsUtils.js'
 // export { ShaderChunk } from './ShaderChunk.js'
 //export { FogExp2 } from 'three/src/scenes/FogExp2.js';
