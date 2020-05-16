@@ -1,7 +1,9 @@
-import React, { useRef, useCallback } from 'react';
+import React, { Suspense, useRef, useCallback } from 'react';
 import { Canvas } from 'react-three-fiber';
-import Cylinder from './components/Cylinder';
-import BlurEffect from './components/BlurEffect';
+const Cylinder =  React.lazy(() => import(
+    /* webpackChunkName: "Cylinder" */ './components/Cylinder'));
+const BlurEffect = React.lazy(() => import(
+    /* webpackChunkName: "BlurEffect" */ './components/BlurEffect'));
 
 function App() {
     const mouse = useRef([300, -200]);
@@ -15,8 +17,12 @@ function App() {
         >
             <ambientLight />
             <pointLight position={[10, 10, 10]} />
-            <Cylinder />
-            <BlurEffect />
+            <Suspense fallback={null}>
+                <Cylinder />
+            </Suspense>
+            <Suspense fallback={null}>
+                <BlurEffect />
+            </Suspense>
         </Canvas>
     );
 }

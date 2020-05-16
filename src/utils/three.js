@@ -86,7 +86,7 @@ export { Material } from 'three/src/materials/Material.js'
 //export { DefaultLoadingManager, LoadingManager } from 'three/src/loaders/LoadingManager.js'
 // export { ImageLoader } from 'three/src/loaders/ImageLoader.js';
 // export { ImageBitmapLoader } from 'three/src/loaders/ImageBitmapLoader.js';
-export { FontLoader } from 'three/src/loaders/FontLoader.js'
+// export { FontLoader } from 'three/src/loaders/FontLoader.js'
 //export { FileLoader } from 'three/src/loaders/FileLoader.js'
 //export { Loader } from 'three/src/loaders/Loader.js'
 //export { LoaderUtils } from 'three/src/loaders/LoaderUtils.js'
