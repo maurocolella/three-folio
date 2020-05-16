@@ -8,7 +8,11 @@ function App() {
     const onMouseMove = useCallback(({ clientX: x, clientY: y }) => (mouse.current = [x - window.innerWidth / 2, y - window.innerHeight / 2]), []);
 
     return (
-        <Canvas camera={{ fov: 4, position: [0, 0, 720] }} onMouseMove={onMouseMove}>
+        <Canvas
+            camera={{ zoom: 10 }}
+            onMouseMove={onMouseMove}
+            orthographic
+        >
             <ambientLight />
             <pointLight position={[10, 10, 10]} />
             <Cylinder />

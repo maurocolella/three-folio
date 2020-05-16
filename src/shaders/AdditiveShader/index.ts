@@ -4,7 +4,7 @@ class AdditiveShader {
     uniforms = {
         tDiffuse: { value: null } as Texture | unknown,
         tDiffuse2: { value: null } as Texture | unknown,
-        fCoeff: { value: 1.0 }
+        fCoeff: { value: 0.2 }
     };
 
     vertexShader = [
@@ -28,7 +28,7 @@ class AdditiveShader {
 
             vec4 texel = texture2D( tDiffuse, vUv );
             vec4 add = texture2D( tDiffuse2, vUv );
-            gl_FragColor = texel + add;
+            gl_FragColor = texel + add * fCoeff;
 
         }`
     ].join("\n")

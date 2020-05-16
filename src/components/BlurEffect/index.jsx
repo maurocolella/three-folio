@@ -36,7 +36,6 @@ function BlurEffect() {
         blurComposer.addPass(rttPassFront);
         blurComposer.addPass(radialPass);
         blurComposer.addPass(gaussianPass);
-        blurComposer.addPass(gaussianPass);
 
         const additiveShader = new AdditiveShader();
         const additivePass = new ShaderPass(additiveShader);

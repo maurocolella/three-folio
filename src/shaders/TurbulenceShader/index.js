@@ -3,8 +3,9 @@ import { Vector3 } from 'three';
 
 const TurbulenceShader = {
     uniforms: {
-      time: { type: "f", value: 0 },
-      color: { type: "f", value: new Vector3(0, 0, 0) },
+      color: { value: new Vector3(0, 0, 0) },
+      magnitude: { value: 2.0 },
+      time: { value: 0 },
     },
     vertexShader: `
         ${classicnoise3D}
@@ -12,6 +13,7 @@ const TurbulenceShader = {
         varying vec2 vUv;
         varying float noise;
         uniform float time;
+        uniform float magnitude;
 
         float turbulence( vec3 p ) {
 
@@ -33,7 +35,7 @@ const TurbulenceShader = {
 
             // add time to the noise parameters so it's animated
             noise = 10.0 *  -.10 * turbulence( .5 * normal + time );
-            float b = 5.0 * pnoise( 0.05 * position + vec3( 2.0 * time ), vec3( 100.0 ) );
+            float b = magnitude * pnoise( 0.05 * position + vec3( 2.0 * time ), vec3( 100.0 ) );
             float displacement = - noise + b;
 
             vec3 newPosition = position + normal * displacement;
