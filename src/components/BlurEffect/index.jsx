@@ -47,7 +47,7 @@ function BlurEffect() {
         /* const fxaa = new ShaderPass(FXAAShader)
         fxaa.material.uniforms['resolution'].value.x = 1 / size.width
         fxaa.material.uniforms['resolution'].value.y = 1 / size.height
-        finalComposer.addPass(fxaa) */
+        finalComposer.addPass(fxaa); */
         return [comp, blurComposer, finalComposer];
     }, [camera, gl, scene]);
 
