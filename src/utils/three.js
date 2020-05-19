@@ -17,7 +17,7 @@ export { Scene } from 'three/src/scenes/Scene.js'
 //export { Skeleton } from 'three/src/objects/Skeleton.js';
 //export { Bone } from 'three/src/objects/Bone.js';
 export { Mesh } from 'three/src/objects/Mesh.js'
-// export { InstancedMesh } from 'three/src/objects/InstancedMesh.js'
+export { InstancedMesh } from 'three/src/objects/InstancedMesh.js'
 export { LineSegments } from 'three/src/objects/LineSegments.js';
 //export { LineLoop } from 'three/src/objects/LineLoop.js';
 export { Line } from 'three/src/objects/Line.js'
@@ -38,7 +38,7 @@ export { Texture } from 'three/src/textures/Texture.js';
 // export { TetrahedronGeometry, TetrahedronBufferGeometry } from 'three/src/geometries/TetrahedronGeometry.js';
 // export { OctahedronGeometry, OctahedronBufferGeometry } from 'three/src/geometries/OctahedronGeometry.js';
 //export { /*IcosahedronGeometry,*/ IcosahedronBufferGeometry } from 'three/src/geometries/IcosahedronGeometry.js'
-// export { /*DodecahedronGeometry,*/ DodecahedronBufferGeometry } from 'three/src/geometries/DodecahedronGeometry.js'
+export { /*DodecahedronGeometry,*/ DodecahedronBufferGeometry } from 'three/src/geometries/DodecahedronGeometry.js'
 // export { PolyhedronGeometry, PolyhedronBufferGeometry } from 'three/src/geometries/PolyhedronGeometry.js';
 // export { TubeGeometry, TubeBufferGeometry } from 'three/src/geometries/TubeGeometry.js';
 //export { /*TorusKnotGeometry,*/ TorusKnotBufferGeometry } from 'three/src/geometries/TorusKnotGeometry.js'
@@ -62,7 +62,7 @@ export { CylinderGeometry, CylinderBufferGeometry } from 'three/src/geometries/C
 export { ShaderMaterial } from 'three/src/materials/ShaderMaterial.js'
 export { PointsMaterial } from 'three/src/materials/PointsMaterial.js'
 //export { MeshPhysicalMaterial } from 'three/src/materials/MeshPhysicalMaterial.js'
-//export { MeshStandardMaterial } from 'three/src/materials/MeshStandardMaterial.js'
+export { MeshStandardMaterial } from 'three/src/materials/MeshStandardMaterial.js'
 // export { MeshPhongMaterial } from 'three/src/materials/MeshPhongMaterial.js'
 // export { MeshToonMaterial } from 'three/src/materials/MeshToonMaterial.js';
 // export { MeshNormalMaterial } from 'three/src/materials/MeshNormalMaterial.js'

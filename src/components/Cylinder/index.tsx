@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import { useFrame } from 'react-three-fiber';
-import { Points, ShaderMaterial, Mesh } from 'three';
+import { Points, ShaderMaterial, Mesh, DoubleSide } from 'three';
 import { TurbulenceShader } from '../../shaders/TurbulenceShader';
 
 function Cylinder(props: any) {
@@ -20,14 +20,16 @@ function Cylinder(props: any) {
         <mesh
             {...props}
             ref={mesh}
-            rotation={[Math.PI * 0.5, 0, 0]}
+            rotation={[Math.PI * 0.25, 0, 0]}
             size={0.01}
         >
-            <cylinderBufferGeometry attach="geometry" args={[24, 24, 40, 360, 40, true]} />
+            <cylinderBufferGeometry attach="geometry" args={[24, 24, 16, 180, 16, true]} />
             <shaderMaterial
                 attach="material"
                 ref={mat}
                 args={[TurbulenceShader]}
+                side={DoubleSide}
+                transparent
             />
         </mesh>
     );

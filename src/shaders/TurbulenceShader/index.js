@@ -3,9 +3,11 @@ import { Vector3 } from 'three';
 
 const TurbulenceShader = {
     uniforms: {
-      color: { value: new Vector3(0, 0, 0) },
-      magnitude: { value: 2.0 },
-      time: { value: 0 },
+        color: { value: new Vector3(0, 0, 0) },
+        magnitude: { value: 2.0 },
+        time: { value: 0 },
+        uScale: { value: 1.0 },
+        uYrot: { value: 1.0 },
     },
     vertexShader: `
         ${classicnoise3D}
@@ -30,8 +32,7 @@ const TurbulenceShader = {
         }
 
         void main() {
-
-        vUv = uv;
+            vUv = uv;
 
             // add time to the noise parameters so it's animated
             noise = 10.0 *  -.10 * turbulence( .5 * normal + time );
@@ -40,17 +41,34 @@ const TurbulenceShader = {
 
             vec3 newPosition = position + normal * displacement;
             gl_Position = projectionMatrix * modelViewMatrix * vec4( newPosition, 1.0 );
-
         }
     `,
     fragmentShader: `
+        varying vec2 vUv;
+
         uniform vec3 color;
-        const float vAlpha = 1.0;
+        uniform float uScale; // For imperfect, isotropic anti-aliasing in
+        uniform float uYrot;  // absence of dFdx() and dFdy() functions
+
+        float frequency = 10.0; // Needed globally for lame version of aastep()
+
+        float aastep(float threshold, float value) {
+            float afwidth = frequency * (1.0/200.0) / uScale / cos(uYrot);
+            return smoothstep(threshold-afwidth, threshold+afwidth, value);
+        }
 
         void main() {
-            gl_FragColor = vec4( color, vAlpha );
+            vec2 uv = vec2(vUv.x, vUv.y);
+            vec2 st2 = mat2(0.707, -0.707, 0.707, 0.707) * uv;
+            vec2 nearest = 2.0 * fract(frequency * st2) - 1.0;
+            float dist = length(nearest);
+            float radius = 0.8;
+            vec4 white = vec4(1.0, 1.0, 1.0, 0.0);
+            vec4 black = vec4(0.0, 0.0, 0.0, 1.0);
+            vec4 fragcolor = mix(black, white, aastep(radius, dist));
+            gl_FragColor = fragcolor;
         }
     `
-  }
+}
 
-  export { TurbulenceShader }
+export { TurbulenceShader }
