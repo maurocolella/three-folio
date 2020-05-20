@@ -1,7 +1,9 @@
 import React, { Suspense, useRef, useCallback } from 'react';
 import { Canvas } from 'react-three-fiber';
-const Swarm =  React.lazy(() => import(
-    /* webpackChunkName: "Swarm" */ './components/Swarm'));
+// const Swarm =  React.lazy(() => import(
+    /* webpackChunkName: "Swarm" */ // './components/Swarm'));
+const Cylinder =  React.lazy(() => import(
+    /* webpackChunkName: "Cylinder" */ './components/Cylinder'));
 const BlurEffect = React.lazy(() => import(
     /* webpackChunkName: "BlurEffect" */ './components/BlurEffect'));
 
@@ -12,14 +14,15 @@ function App() {
 
     return (
         <Canvas
-            camera={{ fov: 75, position: [0, 0, 700], zoom: 10 }}
+            camera={{ fov: 45, position: [0, 0, 1000], zoom: 10 }}
             onMouseMove={onMouseMove}
             orthographic={false}
+            colorManagement
         >
             <ambientLight />
             <pointLight position={[10, 10, 10]} />
             <Suspense fallback={null}>
-                <Swarm count={16000} mouse={mouse} />
+                <Cylinder />
             </Suspense>
             <Suspense fallback={null}>
                 <BlurEffect />

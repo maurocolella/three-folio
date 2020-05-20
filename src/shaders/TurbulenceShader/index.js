@@ -6,6 +6,7 @@ const TurbulenceShader = {
         color: { value: new Vector3(0, 0, 0) },
         magnitude: { value: 2.0 },
         time: { value: 0 },
+        pointSize: { value: 0.01 },
         uScale: { value: 1.0 },
         uYrot: { value: 1.0 },
     },
@@ -16,6 +17,7 @@ const TurbulenceShader = {
         varying float noise;
         uniform float time;
         uniform float magnitude;
+        uniform float pointSize;
 
         float turbulence( vec3 p ) {
 
@@ -33,17 +35,36 @@ const TurbulenceShader = {
 
         void main() {
             vUv = uv;
+            vec3 transformedNormal = normal;
 
             // add time to the noise parameters so it's animated
-            noise = 10.0 *  -.10 * turbulence( .5 * normal + time );
+            noise = 10.0 *  -.10 * turbulence( 7.5 * transformedNormal + time );
             float b = magnitude * pnoise( 0.05 * position + vec3( 2.0 * time ), vec3( 100.0 ) );
             float displacement = - noise + b;
 
-            vec3 newPosition = position + normal * displacement;
+            vec3 newPosition = position + transformedNormal * displacement * displacement;
+            gl_PointSize = pointSize;
             gl_Position = projectionMatrix * modelViewMatrix * vec4( newPosition, 1.0 );
         }
     `,
     fragmentShader: `
+        varying vec2 vUv;
+        varying float noise;
+
+        uniform vec3 color;
+        const float vAlpha = 1.0;
+
+        void main() {
+            // circle
+            /* float border = 0.3;
+            float radius = 0.5;
+            float dist = radius - distance(vUv, vec2(0.5));
+            float vAlpha = smoothstep(0.0, border, dist); */
+
+            gl_FragColor = vec4( color, vAlpha ); //  noise );
+        }
+    `,
+    /* alternateFragmentShader: `
         varying vec2 vUv;
 
         uniform vec3 color;
@@ -68,7 +89,7 @@ const TurbulenceShader = {
             vec4 fragcolor = mix(black, white, aastep(radius, dist));
             gl_FragColor = fragcolor;
         }
-    `
+    ` */
 }
 
-export { TurbulenceShader }
+export { TurbulenceShader };

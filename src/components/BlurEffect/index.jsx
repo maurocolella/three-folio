@@ -12,7 +12,7 @@ import { AdditiveShader } from '../../shaders/AdditiveShader';
 extend({ EffectComposer, ShaderPass, RenderPass });
 
 function BlurEffect() {
-    const { gl, scene, camera, size } = useThree()
+    const { gl, scene, camera, size } = useThree();
 
     const [base, blur, final] = useMemo(() => {
         const renderScene = new RenderPass(scene, camera);
@@ -57,13 +57,11 @@ function BlurEffect() {
         final.setSize(size.width, size.height);
     }, [base, blur, final, size])
 
-    useFrame(() => {
+    return useFrame(() => {
         base.render();
         blur.render();
         final.render();
     }, 1);
-
-    return null;
 };
 
 export default BlurEffect;

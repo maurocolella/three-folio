@@ -18,7 +18,7 @@ function Swarm({ count, mouse }: { count: number, mouse: any }) {
             const speed = 0.01 + Math.random() / 200;
             const xFactor = -50 + Math.random() * 100;
             const yFactor = -50 + Math.random() * 100;
-            const colorDelta = 1 - Math.abs(i % 40 - 20) / 20;
+            const colorDelta = Number((1 - Math.abs(i % 40 - 20) / 20).toFixed(1));
             const pColor = new Color(colorDelta, colorDelta, colorDelta);
             temp.push({ t, factor, speed, xFactor, yFactor, pColor /* zFactor, mx: 0, my: 0 */ });
         }
