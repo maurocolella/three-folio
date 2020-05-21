@@ -10,28 +10,30 @@ function Cylinder(props: any) {
 
     // Rotate mesh every frame, this is outside of React without overhead
     useFrame(({ clock }) => {
-        mesh.current!.rotation.z += 0.001;
+        // mesh.current!.rotation.z += 0.001;
+        mesh.current!.position.z = 100;
         if (mat.current) {
-            mat.current.uniforms.time.value = clock.getElapsedTime() * 0.2;
+            mat.current.uniforms.time.value = clock.getElapsedTime() * 0.1;
         }
     });
 
     return (
-        <points
-            {...props}
-            ref={mesh}
-            rotation={[Math.PI * 0.5, 0, 0]}
-        >
-            <cylinderBufferGeometry attach="geometry" args={[36, 36, 20, 720, 20, true]} />
-            <shaderMaterial
-                attach="material"
-                ref={mat}
-                args={[TurbulenceShader]}
-                side={DoubleSide}
-                transparent
-                depthTest={false}
-            />
-        </points>
+        <>
+            <points
+                {...props}
+                ref={mesh}
+                rotation={[Math.PI * 0.5, 0, 0]}
+                rotation-z={props.rotationZ}
+            >
+                <cylinderBufferGeometry attach="geometry" args={[32, 32, 16, 720, 160, true]} />
+                <shaderMaterial
+                    attach="material"
+                    ref={mat}
+                    args={[TurbulenceShader]}
+                    side={DoubleSide}
+                />
+            </points>
+        </>
     );
 };
 

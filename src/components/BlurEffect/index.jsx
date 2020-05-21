@@ -4,6 +4,7 @@ import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer
 import { ShaderPass } from 'three/examples/jsm/postprocessing/ShaderPass';
 import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass';
 import { TexturePass } from 'three/examples/jsm/postprocessing/TexturePass';
+// import { BloomPass } from 'three/examples/jsm/postprocessing/BloomPass';
 
 import { RadialBlurShader } from '../../shaders/RadialBlurShader';
 import { GaussianBlurShader } from '../../shaders/GaussianBlurShader';
@@ -22,7 +23,9 @@ function BlurEffect() {
         const finalComposer = new EffectComposer(gl);
         comp.renderToScreen = false;
         blurComposer.renderToScreen = false;
-        // renderScene.needsSwap = true;
+
+        // const bloomPass = new BloomPass(1.0, 9, 0.1, 1);
+        renderScene.needsSwap = true;
         comp.addPass(renderScene);
 
         const radialBlurShader = new RadialBlurShader();
@@ -35,6 +38,7 @@ function BlurEffect() {
 
         blurComposer.addPass(rttPassFront);
         blurComposer.addPass(radialPass);
+        // blurComposer.addPass(bloomPass);
         blurComposer.addPass(gaussianPass);
 
         const additiveShader = new AdditiveShader();

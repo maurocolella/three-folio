@@ -1,4 +1,5 @@
 import React, { Suspense, useRef, useCallback } from 'react';
+import { Controls, useControl } from 'react-three-gui';
 import { Canvas } from 'react-three-fiber';
 // const Swarm =  React.lazy(() => import(
     /* webpackChunkName: "Swarm" */ // './components/Swarm'));
@@ -12,22 +13,26 @@ function App() {
     const onMouseMove = useCallback(({ clientX: x, clientY: y }) =>
         (mouse.current = [x - window.innerWidth / 2, y - window.innerHeight / 2]), []);
 
+    const rotationZ = useControl('Rotation Z', { type: 'number' });
+
     return (
-        <Canvas
-            camera={{ fov: 45, position: [0, 0, 1000], zoom: 10 }}
-            onMouseMove={onMouseMove}
-            orthographic={false}
-            colorManagement
-        >
-            <ambientLight />
-            <pointLight position={[10, 10, 10]} />
-            <Suspense fallback={null}>
-                <Cylinder />
-            </Suspense>
-            <Suspense fallback={null}>
-                <BlurEffect />
-            </Suspense>
-        </Canvas>
+        <>
+            <Canvas
+                camera={{ fov: 45, position: [0, 0, 1000], zoom: 10 }}
+                onMouseMove={onMouseMove}
+                orthographic={false}
+                colorManagement
+            >
+                <ambientLight />
+                <Suspense fallback={null}>
+                    <Cylinder rotationZ={rotationZ} />
+                </Suspense>
+                <Suspense fallback={null}>
+                    <BlurEffect />
+                </Suspense>
+            </Canvas>
+            <Controls />
+        </>
     );
 }
 
