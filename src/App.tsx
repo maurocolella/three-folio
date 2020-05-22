@@ -23,7 +23,6 @@ function App() {
                 camera={{ fov: 45, position: [0, 0, 1000], zoom: 10 }}
                 onMouseMove={onMouseMove}
                 orthographic={false}
-                colorManagement
             >
                 <ambientLight />
                 <Suspense fallback={null}>

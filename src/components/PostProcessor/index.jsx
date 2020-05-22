@@ -21,14 +21,14 @@ function PostProcessor() {
 
         const savePass = new SavePass();
         const blurPass = new BlurPass({
-            height: 240,
+            height: 960,
         });
         const textureEffect = new TextureEffect({
             texture: savePass.renderTarget.texture,
-            blendFunction: BlendFunction.ALPHA,
+            blendFunction: BlendFunction.LIGHTEN,
         });
         const texturePass = new EffectPass(camera, textureEffect);
-        textureEffect.blendMode.opacity.value = 0.5;
+        textureEffect.blendMode.opacity.value = 0.9;
 
         composer.addPass(renderPass);
         composer.addPass(savePass);
