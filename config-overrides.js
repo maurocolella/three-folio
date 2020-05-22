@@ -10,8 +10,8 @@ const path = require('path');
 
 module.exports = override(
   addWebpackAlias({
-    three$: path.resolve('./src/utils/three.js'),
-    '../../../build/three.module.js': path.resolve('./src/utils/three.js'),
+    three$: path.resolve('./src/utils/three.ts'),
+    '../../../build/three.module.js': path.resolve('./src/utils/three.ts'),
   }),
   addReactRefresh({ disableRefreshCheck: true }),
   addWebpackPlugin(new BundleAnalyzerPlugin()),

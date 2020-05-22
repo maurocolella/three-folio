@@ -7,6 +7,10 @@ function Cylinder(props: any) {
     // This reference will give us direct access to the mesh
     const mesh = useRef<Points>();
     const mat = useRef<ShaderMaterial>();
+    if (mat.current) {
+        mat.current.uniforms.magnitude.value = props.magnitude;
+        mat.current.uniforms.frequency.value = props.frequency;
+    }
 
     // Rotate mesh every frame, this is outside of React without overhead
     useFrame(({ clock }) => {
@@ -25,12 +29,11 @@ function Cylinder(props: any) {
                 rotation={[Math.PI * 0.5, 0, 0]}
                 rotation-z={props.rotationZ}
             >
-                <cylinderBufferGeometry attach="geometry" args={[32, 32, 16, 720, 160, true]} />
+                <cylinderBufferGeometry attach="geometry" args={[32, 32, 32, 720, 160, true]} />
                 <shaderMaterial
                     attach="material"
                     ref={mat}
                     args={[TurbulenceShader]}
-                    side={DoubleSide}
                 />
             </points>
         </>

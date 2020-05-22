@@ -14,6 +14,8 @@ function App() {
         (mouse.current = [x - window.innerWidth / 2, y - window.innerHeight / 2]), []);
 
     const rotationZ = useControl('Rotation Z', { type: 'number' });
+    const magnitude = useControl('Amplitude', { type: 'number', value: 8, min: 0, max: 32 });
+    const frequency = useControl('Frequency', { type: 'number', value: 0.2, min: 0, max: 0.5 });
 
     return (
         <>
@@ -25,7 +27,11 @@ function App() {
             >
                 <ambientLight />
                 <Suspense fallback={null}>
-                    <Cylinder rotationZ={rotationZ} />
+                    <Cylinder
+                        rotationZ={rotationZ}
+                        magnitude={magnitude}
+                        frequency={frequency}
+                    />
                 </Suspense>
                 <Suspense fallback={null}>
                     <BlurEffect />

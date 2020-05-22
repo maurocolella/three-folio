@@ -6,9 +6,8 @@ const TurbulenceShader = {
         color: { value: new Vector3(0, 0, 0) },
         magnitude: { value: 8 },
         time: { value: 0 },
-        pointSize: { value: 0.2 },
-        uScale: { value: 1.0 },
-        uYrot: { value: 1.0 },
+        pointSize: { value: 20 },
+        frequency: { value: 0.2 },
     },
     vertexShader: `
         ${classicnoise3D}
@@ -18,6 +17,7 @@ const TurbulenceShader = {
         uniform float time;
         uniform float magnitude;
         uniform float pointSize;
+        uniform float frequency;
 
         float turbulence( vec3 p ) {
 
@@ -38,7 +38,6 @@ const TurbulenceShader = {
             vec3 transformedNormal = normal;
 
             float roughness = 2.;
-            float frequency = 0.2;
             // add time to the noise parameters so it's animated
             float noise = roughness * -.10 * turbulence( 7.5 * transformedNormal + time );
             float b = magnitude * (.5 - abs(.5 - vUv.y)) * pnoise( frequency * position + vec3( 2.0 * time ), vec3( 100.0 ) );
@@ -58,8 +57,12 @@ const TurbulenceShader = {
         const float vAlpha = 1.0;
 
         void main() {
-            float delta = abs(.5 - vUv.y);
-            gl_FragColor = vec4( vec3( sqrt( delta ) ), vAlpha ); // displacement * displacement + .5 );
+            float delta = clamp( sqrt( abs(.5 - vUv.y) ), 0., 1. );
+
+            if (delta > 0.45)
+                discard;
+
+            gl_FragColor = vec4( vec3( delta ), 1. - delta );
         }
     `,
 }
