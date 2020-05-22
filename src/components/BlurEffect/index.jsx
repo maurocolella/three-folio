@@ -6,6 +6,8 @@ import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass';
 import { TexturePass } from 'three/examples/jsm/postprocessing/TexturePass';
 // import { BloomPass } from 'three/examples/jsm/postprocessing/BloomPass';
 
+import { FXAAShader } from 'three/examples/jsm/shaders/FXAAShader';
+
 import { RadialBlurShader } from '../../shaders/RadialBlurShader';
 import { GaussianBlurShader } from '../../shaders/GaussianBlurShader';
 import { AdditiveShader } from '../../shaders/AdditiveShader';
@@ -25,8 +27,13 @@ function BlurEffect() {
         blurComposer.renderToScreen = false;
 
         // const bloomPass = new BloomPass(1.0, 9, 0.1, 1);
-        renderScene.needsSwap = true;
+        // renderScene.needsSwap = true;
         comp.addPass(renderScene);
+
+        const fxaa = new ShaderPass(FXAAShader)
+        fxaa.material.uniforms['resolution'].value.x = 1 / size.width
+        fxaa.material.uniforms['resolution'].value.y = 1 / size.height
+        comp.addPass(fxaa);
 
         const radialBlurShader = new RadialBlurShader();
         radialBlurShader.uniforms.strength.value = 0.08;
@@ -46,14 +53,10 @@ function BlurEffect() {
 
         additivePass.material.uniforms.tDiffuse2.value = blurComposer.renderTarget1.texture;
         finalComposer.addPass(rttPassFront);
-        // finalComposer.addPass(additivePass);
+        finalComposer.addPass(additivePass);
 
-        /* const fxaa = new ShaderPass(FXAAShader)
-        fxaa.material.uniforms['resolution'].value.x = 1 / size.width
-        fxaa.material.uniforms['resolution'].value.y = 1 / size.height
-        finalComposer.addPass(fxaa); */
         return [comp, blurComposer, finalComposer];
-    }, [camera, gl, scene]);
+    }, [camera, gl, scene, size]);
 
     useEffect(() => {
         base.setSize(size.width, size.height);
