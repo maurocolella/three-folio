@@ -1,6 +1,6 @@
 //import 'three/src/polyfills.js';
 
-//export { WebGLMultisampleRenderTarget } from 'three/src/renderers/WebGLMultisampleRenderTarget.js'
+export { WebGLMultisampleRenderTarget } from 'three/src/renderers/WebGLMultisampleRenderTarget.js'
 //export { WebGLRenderTargetCube } from 'three/src/renderers/WebGLRenderTargetCube.js';
 export { WebGLRenderTarget } from 'three/src/renderers/WebGLRenderTarget.js'
 export { WebGLRenderer } from 'three/src/renderers/WebGLRenderer.js'
@@ -30,7 +30,7 @@ export { DataTexture } from 'three/src/textures/DataTexture.js'
 //export { CompressedTexture } from 'three/src/textures/CompressedTexture.js';
 //export { CubeTexture } from 'three/src/textures/CubeTexture.js';
 //export { CanvasTexture } from 'three/src/textures/CanvasTexture.js'
-//export { DepthTexture } from 'three/src/textures/DepthTexture.js';
+export { DepthTexture } from 'three/src/textures/DepthTexture.js';
 export { Texture } from 'three/src/textures/Texture.js';
 
 // export { WireframeGeometry } from 'three/src/geometries/WireframeGeometry.js';
@@ -65,11 +65,11 @@ export { PointsMaterial } from 'three/src/materials/PointsMaterial.js'
 export { MeshStandardMaterial } from 'three/src/materials/MeshStandardMaterial.js'
 // export { MeshPhongMaterial } from 'three/src/materials/MeshPhongMaterial.js'
 // export { MeshToonMaterial } from 'three/src/materials/MeshToonMaterial.js';
-// export { MeshNormalMaterial } from 'three/src/materials/MeshNormalMaterial.js'
+export { MeshNormalMaterial } from 'three/src/materials/MeshNormalMaterial.js'
 //export { MeshLambertMaterial } from 'three/src/materials/MeshLambertMaterial.js'
-// export { MeshDepthMaterial } from 'three/src/materials/MeshDepthMaterial.js';
+export { MeshDepthMaterial } from 'three/src/materials/MeshDepthMaterial.js';
 // export { MeshDistanceMaterial } from 'three/src/materials/MeshDistanceMaterial.js';
-// export { MeshBasicMaterial } from 'three/src/materials/MeshBasicMaterial.js'
+export { MeshBasicMaterial } from 'three/src/materials/MeshBasicMaterial.js'
 // export { MeshMatcapMaterial } from 'three/src/materials/MeshMatcapMaterial.js';
 // export { LineDashedMaterial } from 'three/src/materials/LineDashedMaterial.js';
 // export { LineBasicMaterial } from 'three/src/materials/LineBasicMaterial.js'
@@ -83,12 +83,12 @@ export { Material } from 'three/src/materials/Material.js'
 // export { ObjectLoader } from 'three/src/loaders/ObjectLoader.js';
 // export { MaterialLoader } from 'three/src/loaders/MaterialLoader.js';
 //export { BufferGeometryLoader } from 'three/src/loaders/BufferGeometryLoader.js'
-//export { DefaultLoadingManager, LoadingManager } from 'three/src/loaders/LoadingManager.js'
+export { DefaultLoadingManager, LoadingManager } from 'three/src/loaders/LoadingManager.js'
 // export { ImageLoader } from 'three/src/loaders/ImageLoader.js';
 // export { ImageBitmapLoader } from 'three/src/loaders/ImageBitmapLoader.js';
 // export { FontLoader } from 'three/src/loaders/FontLoader.js'
 //export { FileLoader } from 'three/src/loaders/FileLoader.js'
-//export { Loader } from 'three/src/loaders/Loader.js'
+export { Loader } from 'three/src/loaders/Loader.js'
 //export { LoaderUtils } from 'three/src/loaders/LoaderUtils.js'
 // export { Cache } from 'three/src/loaders/Cache.js';
 // export { AudioLoader } from 'three/src/loaders/AudioLoader.js';
@@ -107,7 +107,7 @@ export { PerspectiveCamera } from 'three/src/cameras/PerspectiveCamera.js'
 export { OrthographicCamera } from 'three/src/cameras/OrthographicCamera.js'
 // export { CubeCamera } from 'three/src/cameras/CubeCamera.js';
 // export { ArrayCamera } from 'three/src/cameras/ArrayCamera.js';
-// export { Camera } from 'three/src/cameras/Camera.js';
+export { Camera } from 'three/src/cameras/Camera.js';
 // export { AudioListener } from 'three/src/audio/AudioListener.js';
 // export { PositionalAudio } from 'three/src/audio/PositionalAudio.js';
 // export { AudioContext } from 'three/src/audio/AudioContext.js';
@@ -126,7 +126,7 @@ export { OrthographicCamera } from 'three/src/cameras/OrthographicCamera.js'
 // export { AnimationObjectGroup } from 'three/src/animation/AnimationObjectGroup.js';
 //export { AnimationMixer } from 'three/src/animation/AnimationMixer.js'
 //export { AnimationClip } from 'three/src/animation/AnimationClip.js'
-// export { Uniform } from 'three/src/core/Uniform.js';
+export { Uniform } from 'three/src/core/Uniform.js';
 // export { InstancedBufferGeometry } from 'three/src/core/InstancedBufferGeometry.js';
 export { BufferGeometry } from 'three/src/core/BufferGeometry.js'
 export { Geometry } from 'three/src/core/Geometry.js'
@@ -160,7 +160,7 @@ export { Matrix3 } from 'three/src/math/Matrix3.js'
 // export { Box2 } from 'three/src/math/Box2.js';
 // export { Line3 } from 'three/src/math/Line3.js';
 // export { Euler } from 'three/src/math/Euler.js';
-//export { Vector4 } from 'three/src/math/Vector4.js';
+export { Vector4 } from 'three/src/math/Vector4.js';
 export { Vector3 } from 'three/src/math/Vector3.js'
 export { Vector2 } from 'three/src/math/Vector2.js'
 export { Quaternion } from 'three/src/math/Quaternion.js'

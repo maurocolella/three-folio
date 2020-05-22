@@ -5,8 +5,8 @@ import { Canvas } from 'react-three-fiber';
     /* webpackChunkName: "Swarm" */ // './components/Swarm'));
 const Cylinder =  React.lazy(() => import(
     /* webpackChunkName: "Cylinder" */ './components/Cylinder'));
-const BlurEffect = React.lazy(() => import(
-    /* webpackChunkName: "BlurEffect" */ './components/BlurEffect'));
+const PostProcessor = React.lazy(() => import(
+    /* webpackChunkName: "PostProcessor" */ './components/PostProcessor'));
 
 function App() {
     const mouse = useRef([300, -200]);
@@ -34,7 +34,7 @@ function App() {
                     />
                 </Suspense>
                 <Suspense fallback={null}>
-                    <BlurEffect />
+                    <PostProcessor />
                 </Suspense>
             </Canvas>
             <Controls />
