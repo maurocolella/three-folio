@@ -46,7 +46,7 @@ function BlurEffect() {
 
         additivePass.material.uniforms.tDiffuse2.value = blurComposer.renderTarget1.texture;
         finalComposer.addPass(rttPassFront);
-        finalComposer.addPass(additivePass);
+        // finalComposer.addPass(additivePass);
 
         /* const fxaa = new ShaderPass(FXAAShader)
         fxaa.material.uniforms['resolution'].value.x = 1 / size.width

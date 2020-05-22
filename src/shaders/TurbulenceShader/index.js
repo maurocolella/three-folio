@@ -43,8 +43,8 @@ const TurbulenceShader = {
             float b = amplitude * (.5 - abs(.5 - vUv.y)) * pnoise( frequency * position + vec3( 2.0 * time ), vec3( 100.0 ) );
             displacement = - noise + b;
 
-            vec3 T = cross( transformedNormal, vec3( turbulence( .2 * position /* + time */ ) ) );
-            vec3 newPosition = position + transformedNormal * displacement * displacement + T;
+            vec3 T = cross( transformedNormal, vec3( turbulence( .2 * position ) ) );
+            vec3 newPosition = position + transformedNormal * pow( displacement, 2. ) + T;
             gl_PointSize = pointSize;
             gl_Position = projectionMatrix * modelViewMatrix * vec4( newPosition, 1.0 );
         }
@@ -59,8 +59,12 @@ const TurbulenceShader = {
         void main() {
             float delta = abs(.5 - vUv.y) * 0.8;
 
-            // if (delta > 0.45)
-                // discard;
+            vec2 circCoord = 2.0 * gl_PointCoord - 1.0;
+            if (dot(circCoord, circCoord) > 1.0) {
+                discard;
+            }
+            // if (delta > 0.4)
+               // discard;
 
             gl_FragColor = vec4( vec3( delta ), 1. - delta );
         }
