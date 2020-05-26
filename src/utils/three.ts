@@ -17,12 +17,12 @@ export { Scene } from 'three/src/scenes/Scene.js'
 //export { Skeleton } from 'three/src/objects/Skeleton.js';
 //export { Bone } from 'three/src/objects/Bone.js';
 export { Mesh } from 'three/src/objects/Mesh.js'
-export { InstancedMesh } from 'three/src/objects/InstancedMesh.js'
-export { LineSegments } from 'three/src/objects/LineSegments.js';
+//export { InstancedMesh } from 'three/src/objects/InstancedMesh.js'
+//export { LineSegments } from 'three/src/objects/LineSegments.js';
 //export { LineLoop } from 'three/src/objects/LineLoop.js';
-export { Line } from 'three/src/objects/Line.js'
+//export { Line } from 'three/src/objects/Line.js'
 export { Points } from 'three/src/objects/Points.js'
-export { Group } from 'three/src/objects/Group.js'
+//export { Group } from 'three/src/objects/Group.js'
 //export { VideoTexture } from 'three/src/textures/VideoTexture.js';
 export { DataTexture } from 'three/src/textures/DataTexture.js'
 //export { DataTexture2DArray } from 'three/src/textures/DataTexture2DArray.js';

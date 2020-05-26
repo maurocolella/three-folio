@@ -6,7 +6,6 @@ import {
     BlurPass,
     EffectComposer,
     EffectPass,
-    KernelSize,
     RenderPass,
     SavePass,
     TextureEffect,
@@ -21,7 +20,7 @@ function PostProcessor() {
 
         const savePass = new SavePass();
         const blurPass = new BlurPass({
-            height: 960,
+            height: 240,
         });
         const textureEffect = new TextureEffect({
             texture: savePass.renderTarget.texture,

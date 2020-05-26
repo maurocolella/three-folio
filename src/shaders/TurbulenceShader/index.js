@@ -40,10 +40,10 @@ const TurbulenceShader = {
             float roughness = 2.;
             // add time to the noise parameters so it's animated
             float noise = roughness * -.10 * turbulence( 7.5 * transformedNormal + time );
-            float b = amplitude * (.5 - abs(.5 - vUv.y)) * pnoise( frequency * position + vec3( 2.0 * time ), vec3( 100.0 ) );
-            displacement = - noise + b;
+            float b = amplitude * .5 * pnoise( frequency * position + vec3( 2.0 * time ), vec3( 100.0 ) );
+            displacement = -noise + b;
 
-            vec3 T = cross( transformedNormal, vec3( turbulence( .2 * position ) ) );
+            vec3 T = cross( transformedNormal, vec3( turbulence( .06 * position ) ) );
             vec3 newPosition = position + transformedNormal * pow( displacement, 2. ) + T;
             gl_PointSize = pointSize;
             gl_Position = projectionMatrix * modelViewMatrix * vec4( newPosition, 1.0 );
@@ -63,8 +63,7 @@ const TurbulenceShader = {
             if (dot(circCoord, circCoord) > 1.0) {
                 discard;
             }
-            // if (delta > 0.4)
-               // discard;
+
 
             gl_FragColor = vec4( vec3( delta ), 1. - delta );
         }
