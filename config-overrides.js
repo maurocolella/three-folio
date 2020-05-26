@@ -14,7 +14,7 @@ module.exports = override(
     '../../../build/three.module.js': path.resolve('./src/utils/three.ts'),
   }),
   addReactRefresh({ disableRefreshCheck: true }),
-  addWebpackPlugin(new BundleAnalyzerPlugin()),
+  // addWebpackPlugin(new BundleAnalyzerPlugin()),
   addWebpackModuleRule(
     {
       test: /\.(glsl|vs|fs|vert|frag)$/,
