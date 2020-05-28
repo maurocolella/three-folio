@@ -7,8 +7,8 @@ const compression = require('compression');
 
 let app = express();
 
+app.use(compression({ threshold: 0 }));
 app.use(express.static(path.join(__dirname, 'build')));
-app.use(compression());
 
 const port = process.env.PORT || '8080';
 app.set('port', port);
